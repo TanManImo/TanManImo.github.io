@@ -48,33 +48,35 @@
 			</div>
 		</div>
 		<div class="menu">
-			<h1>Mage <span class="con">Con</span> / <span class="wis">Wis</span> Simulator</h1>
-			<form class="form" method="post">
-				<div class="form__input">
-					<label for="lvl">Rolls</label>
-					<input class="input__roll" name="roll" type="text" value="100"/>
-				</div>
-				<div class="form__input">
-					<div class="input__label">
-						<label for="lvl">Level</label><span class="input__value">49 / 50</span>
+			<div class="menu__popup__overflow">
+				<h1>Mage <span class="con">Con</span> / <span class="wis">Wis</span> Simulator</h1>
+				<form class="form" method="post">
+					<div class="form__input">
+						<label for="lvl">Rolls</label>
+						<input class="input__roll" name="roll" type="text" value="100"/>
 					</div>
-					<input class="range input__lvl" name="lvl" type="range" min="1" value="49" max="50" step="1"/>
-				</div>
-				<div class="form__input">
-					<div class="input__label">
-						<label for="con">Con</label><span class="input__value">12 / 18</span>
+					<div class="form__input">
+						<div class="input__label">
+							<label for="lvl">Level</label><span class="input__value">49 / 50</span>
+						</div>
+						<input class="range input__lvl" name="lvl" type="range" min="1" value="49" max="50" step="1"/>
 					</div>
-					<input class="range input__con" name="con" type="range" min="8" value="12" max="18" step="1"/>
-				</div>
-				<div class="form__input">
-					<div class="input__label">
-						<label for="wis">Wis</label><span class="input__value">14 / 18</span>
+					<div class="form__input">
+						<div class="input__label">
+							<label for="con">Con</label><span class="input__value">12 / 18</span>
+						</div>
+						<input class="range input__con" name="con" type="range" min="8" value="12" max="18" step="1"/>
 					</div>
-					<input class="range input__wis" name="wis" type="range" min="12" value="14" max="18" step="1"/>
-				</div>
-				<button type="button" class="roll">Roll</button>
-				<button type="button" class="cancel display__none">Cancel</button>
-			</form>
+					<div class="form__input">
+						<div class="input__label">
+							<label for="wis">Wis</label><span class="input__value">14 / 18</span>
+						</div>
+						<input class="range input__wis" name="wis" type="range" min="12" value="14" max="18" step="1"/>
+					</div>
+					<button type="button" class="roll">Roll</button>
+					<button type="button" class="cancel display__none">Cancel</button>
+				</form>
+			</div>
 			<div class="info">i</div>
 		</div>
 		<div class="info__popup display__none">
