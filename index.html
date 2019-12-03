@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<script type="text/javascript" src="./global.js"></script>
+	<link rel="stylesheet" href="./style.css" />
+	<title>Con/Wis Simulator</title>
+</head>
+<body>
+	<main>
+		<canvas id="hpChart"></canvas>
+		<canvas id="mpChart" class="display__none"></canvas>
+		<div class="toggle display__none">
+			<div class="toggle__button">
+				View <span class="wis">MP</span>
+			</div>
+			<div class="menu__icon">
+				<div class="bar1"></div>
+				<div class="bar2"></div>
+				<div class="bar3"></div>
+			</div>
+		</div>
+		<div class="stats display__none">
+			<div class="stats__hide">
+				Hide Stats
+			</div>
+			<div class="stats__foldable">
+				<h3 class="lvl">Level <span class="stats__lvl"></span></h3>
+				<div class="stats__con__section">
+					<h3 class="con">Con <span class="stats__con"></span></h3>
+					<p>Max HP: <span class="stats__con__max"></span></p>
+					<p>Min HP: <span class="stats__con__min"></span></p>
+					<p>Avg HP: <span class="stats__con__avg"></span></p>
+				</div>
+				<div class="stats__wis__section">
+					<h3 class="wis">Wis <span class="stats__wis"></span></h3>
+					<p>Max MP: <span class="stats__wis__max"></span></p>
+					<p>Min MP: <span class="stats__wis__min"></span></p>
+					<p>Avg MP: <span class="stats__wis__avg"></span></p>
+				</div>
+				<div class="stats__trials__section">
+					<h3>Trials</h3>
+					<p><span class="stats__trials"></span></p>
+				</div>
+				<div class="download">
+					.CSV <span>&#10515;</span>
+				</div>
+			</div>
+		</div>
+		<div class="menu">
+			<h1>Mage <span class="con">Con</span> / <span class="wis">Wis</span> Simulator</h1>
+			<form class="form" method="post">
+				<div class="form__input">
+					<label for="lvl">Rolls</label>
+					<input class="input__roll" name="roll" type="text" value="100"/>
+				</div>
+				<div class="form__input">
+					<div class="input__label">
+						<label for="lvl">Level</label><span class="input__value">49 / 50</span>
+					</div>
+					<input class="range input__lvl" name="lvl" type="range" min="1" value="49" max="50" step="1"/>
+				</div>
+				<div class="form__input">
+					<div class="input__label">
+						<label for="con">Con</label><span class="input__value">12 / 18</span>
+					</div>
+					<input class="range input__con" name="con" type="range" min="8" value="12" max="18" step="1"/>
+				</div>
+				<div class="form__input">
+					<div class="input__label">
+						<label for="wis">Wis</label><span class="input__value">14 / 18</span>
+					</div>
+					<input class="range input__wis" name="wis" type="range" min="12" value="14" max="18" step="1"/>
+				</div>
+				<button type="button" class="roll">Roll</button>
+				<button type="button" class="cancel display__none">Cancel</button>
+			</form>
+			<div class="info">i</div>
+		</div>
+		<div class="info__popup display__none">
+			<div class="info__popup__overflow">
+				<div class="info__notes"> 
+					<h2>Info</h2>
+					<p>This tool is intended for the Mage class.</p>
+					<p>This simulation assumes that all possible values within each range have an equal
+					probability to roll each value. (i.e. 3 possible values for any given CON will result in 1/3 chance for each value.)</p>
+					<p>The results are displayed such that the simulation max, min, and avg are shown first; they are to the left of the theoretical max, min, and avg for those <span class="con">CON</span>/<span class="wis">WIS</span>/LVL values.</p>
+				</div>
+				<div class="com2us__notes">
+					<h2>Com2Us notes</h2>
+					<h3>Constitution (<span class="com2us__notes__con">CON</span>)</h3>
+					<p>affects amount of total health points (HP), health points gained per level up and health regeneration rate. Each time a character gains a level, he or she will gain an amount of health proportioned with their level, with higher constitution giving more health. E.g. A character with 18 CON may gain around 10 to 15 HP each level while another with 15 CON may only gain 8 to 12 (HP). If this stat is modified through the use of elixirs, the total health shall also be recalculated, proportioned to your level and constitution.</p>
+					<h3>Wisdom (<span class="com2us__notes__wis">WIS</span>)</h3>
+					<p> affects amount of total mana points (MP), mana points gained per level and mana regeneration rate. It works the same way as constitution.</p>
+				</div>
+			</div>
+			<div class="info__close">x</div>
+		</div>
+		<script type="text/javascript" src="./script.js"></script>
+		<script type="text/javascript" src="./chart.js"></script>
+	</main>
+</body>
+</html>
