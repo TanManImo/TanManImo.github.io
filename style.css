@@ -73,6 +73,8 @@ main {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	max-height: 95vh;
+	overflow-y: scroll;
 	padding: 15px;
 	position: absolute;
 	left: 5%;
@@ -131,6 +133,11 @@ main {
 	right: 12.5%;
 	top: 25%;
 	width: 75%;
+}
+
+.menu__popup__overflow {
+	height: 100%;
+	overflow-y: scroll;
 }
 
 .menu__icon {
