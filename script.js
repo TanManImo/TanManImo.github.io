@@ -13,7 +13,7 @@ function prepareData(form) {
 	form.trials = parseInt(form.trials,10);
 
 	player = {
-		lvl: form.lvl > 0 && form.lvl <= 50? form.lvl : 1,
+		lvl: form.lvl > 0 && form.lvl <= 55? form.lvl : 1,
 		con: form.con >= 8 && form.con <= 18 ? form.con : 12,
 		wis: form.wis >= 12 && form.wis <= 18 ? form.wis : 14
 	};
