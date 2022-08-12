@@ -52,7 +52,7 @@
 				<h1>Mage <span class="con">Con</span> / <span class="wis">Wis</span> Simulator</h1>
 				<form class="form" method="post">
 					<div class="form__input">
-						<label for="lvl">Rolls</label>
+						<label for="roll">Rolls</label>
 						<input class="input__roll" name="roll" type="text" value="100"/>
 					</div>
 					<div class="form__input">
@@ -72,6 +72,42 @@
 							<label for="wis">Wis</label><span class="input__value">14 / 18</span>
 						</div>
 						<input class="range input__wis" name="wis" type="range" min="12" value="14" max="18" step="1"/>
+					</div>
+					<div class="form__input">
+						<div class="input__label">
+							<label for="hp_gear">HP (Gear)</label><span class="input__value">0 / 1000</span>
+						</div>
+						<input class="range input__hp_gear" name="hp_gear" type="range" min="0" value="0" max="1000" step="1"/>
+					</div>
+					<div class="form__input">
+						<div class="input__label">
+							<label for="hp_collection">HP (Collection)</label><span class="input__value">0 / 1000</span>
+						</div>
+						<input class="range input__hp_collection" name="hp_collection" type="range" min="0" value="0" max="1000" step="1"/>
+					</div>
+					<div class="form__input">
+						<div class="input__label">
+							<label for="hp_percent">HP %</label><span class="input__value">0.00 % / 30 %</span>
+						</div>
+						<input class="range input__hp_percent" name="hp_percent" type="range" min="0.00" value="0.00" max="20.00" step="0.05"/>
+					</div>
+					<div class="form__input">
+						<div class="input__label">
+							<label for="mp_gear">MP (Gear)</label><span class="input__value">0 / 1000</span>
+						</div>
+						<input class="range input__mp_gear" name="mp_gear" type="range" min="0" value="0" max="1000" step="1"/>
+					</div>
+					<div class="form__input">
+						<div class="input__label">
+							<label for="mp_collection">MP (Collection)</label><span class="input__value">0 / 1000</span>
+						</div>
+						<input class="range input__mp_collection" name="mp_collection" type="range" min="0" value="0" max="1000" step="1"/>
+					</div>
+					<div class="form__input">
+						<div class="input__label">
+							<label for="mp_percent">MP %</label><span class="input__value">0.00 % / 30 %</span>
+						</div>
+						<input class="range input__mp_percent" name="mp_percent" type="range" min="0.00" value="0.00" max="20.00" step="0.05"/>
 					</div>
 					<button type="button" class="roll">Roll</button>
 					<button type="button" class="cancel display__none">Cancel</button>
