@@ -44,13 +44,25 @@ var formData = {
 	trials: 1,
 	lvl: 1,
 	con: 12,
-	wis: 14
+	wis: 14,
+	hp_gear: 0,
+	hp_collection: 0,
+	hp_percent: 0,
+	mp_gear: 0,
+	mp_collection: 0,
+	mp_percent: 0
 };
 function getFormData() {
 	formData.trials = form.querySelector(".input__roll").value;
 	formData.lvl = form.querySelector(".input__lvl").value;
 	formData.con = form.querySelector(".input__con").value;
 	formData.wis = form.querySelector(".input__wis").value;
+	formData.hp_gear = form.querySelector(".input__hp_gear").value;
+	formData.hp_collection = form.querySelector(".input__hp_collection").value;
+	formData.hp_percent = form.querySelector(".input__hp_percent").value;
+	formData.mp_gear = form.querySelector(".input__mp_gear").value;
+	formData.mp_collection = form.querySelector(".input__mp_collection").value;
+	formData.mp_percent = form.querySelector(".input__mp_percent").value;	
 	return formData;
 }
 
