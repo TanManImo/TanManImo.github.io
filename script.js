@@ -11,19 +11,31 @@ function prepareData(form) {
 	form.con = parseInt(form.con,10);
 	form.wis = parseInt(form.wis,10);
 	form.trials = parseInt(form.trials,10);
+	form.hp_gear = parseInt(form.hp_gear,10);
+	form.hp_collection = parseInt(form.hp_collection,10);
+	form.hp_percent = (parseFloat(form.hp_percent)/100)+1;
+	form.mp_gear = parseInt(form.mp_gear,10);
+	form.mp_collection = parseInt(form.mp_collection,10);
+	form.mp_percent = (parseFloat(form.mp_percent)/100)+1;
 
 	player = {
-		lvl: form.lvl > 0 && form.lvl <= 55? form.lvl : 1,
+		lvl: form.lvl > 0 && form.lvl <= 55 ? form.lvl : 1,
 		con: form.con >= 8 && form.con <= 18 ? form.con : 12,
-		wis: form.wis >= 12 && form.wis <= 18 ? form.wis : 14
+		wis: form.wis >= 12 && form.wis <= 18 ? form.wis : 14,
+		hp_gear: form.hp_gear > 0 ? form.hp_gear : 0,
+		hp_collection: form.hp_collection > 0 ? form.hp_collection : 0,
+		hp_percent: form.hp_percent > 1 ? form.hp_percent : 1,
+		mp_gear: form.mp_gear > 0 ? form.mp_gear : 0,
+		mp_collection: form.mp_collection > 0 ? form.mp_collection : 0,
+		mp_percent: form.mp_percent > 1 ? form.mp_percent : 1
 	};
 
 	stats = {
-		max_hp: ((10+player.con)+((player.lvl-1)*(con.range[Math.floor(player.con/4)]))),
-		min_hp: ((10+player.con)+((player.lvl-1)*(con.range[Math.floor((player.con/4))-(con.values-1)]))),
+		max_hp: Math.floor((((10+player.con)+((player.lvl-1)*(con.range[Math.floor(player.con/4)]))) * player.hp_percent)) + player.hp_gear + player.hp_collection,
+		min_hp: Math.floor((((10+player.con)+((player.lvl-1)*(con.range[Math.floor((player.con/4))-(con.values-1)]))) * player.hp_percent)) + player.hp_gear + player.hp_collection,
 		avg_hp: 0,
-		max_mp: ((10+player.wis)+((player.lvl-1)*(wis.range[player.wis-wis.base+wis.values-1]))),
-		min_mp: ((10+player.wis)+((player.lvl-1)*(wis.range[player.wis-wis.base]))),
+		max_mp: Math.floor((((10+player.wis)+((player.lvl-1)*(wis.range[player.wis-wis.base+wis.values-1]))) * player.mp_percent)) + player.mp_gear + player.mp_collection,
+		min_mp: Math.floor((((10+player.wis)+((player.lvl-1)*(wis.range[player.wis-wis.base]))) * player.mp_percent)) + player.mp_gear + player.mp_collection,
 		avg_mp: 0
 	}
 	stats.avg_hp = (stats.max_hp+stats.min_hp)/2;
@@ -73,6 +85,10 @@ function start() {
 			rng = Math.floor(Math.random()*(wis.values))+(player.wis-wis.base);
 			mp += wis.range[rng];
 		}
+
+		hp = Math.floor(hp * player.hp_percent) + player.hp_gear + player.hp_collection;
+		mp = Math.floor(mp * player.mp_percent) + player.mp_gear + player.mp_collection;
+
 		if (hp > trial.max_hp) trial.max_hp = hp;
 		if (hp < trial.min_hp) trial.min_hp = hp;
 		if (mp > trial.max_mp) trial.max_mp = mp;
@@ -85,16 +101,15 @@ function start() {
 
 		trial.avg_hp += hp;
 		trial.avg_mp += mp;
-
 	}
 	trial.avg_hp /= trial.count;
 	trial.avg_mp /= trial.count;
-	trial.max_hp_per_lvl = (trial.max_hp-(10+player.con))/(player.lvl-1);
-	trial.min_hp_per_lvl = (trial.min_hp-(10+player.con))/(player.lvl-1);
-	trial.avg_hp_per_lvl = (trial.avg_hp-(10+player.con))/(player.lvl-1);
-	trial.max_mp_per_lvl = (trial.max_mp-(10+player.wis))/(player.lvl-1);
-	trial.min_mp_per_lvl = (trial.min_mp-(10+player.wis))/(player.lvl-1);
-	trial.avg_mp_per_lvl = (trial.avg_mp-(10+player.wis))/(player.lvl-1);
+	trial.max_hp_per_lvl = ((trial.max_hp-player.hp_gear-player.hp_collection-(10+player.con))/player.hp_percent)/(player.lvl-1);
+	trial.min_hp_per_lvl = ((trial.min_hp-player.hp_gear-player.hp_collection-(10+player.con))/player.hp_percent)/(player.lvl-1);
+	trial.avg_hp_per_lvl = ((trial.avg_hp-player.hp_gear-player.hp_collection-(10+player.con))/player.hp_percent)/(player.lvl-1);
+	trial.max_mp_per_lvl = ((trial.max_mp-player.mp_gear-player.mp_collection-(10+player.wis))/player.mp_percent)/(player.lvl-1);
+	trial.min_mp_per_lvl = ((trial.min_mp-player.mp_gear-player.mp_collection-(10+player.wis))/player.mp_percent)/(player.lvl-1);
+	trial.avg_mp_per_lvl = ((trial.avg_mp-player.mp_gear-player.mp_collection-(10+player.wis))/player.mp_percent)/(player.lvl-1);
 }
 
 function populateStats() {
