@@ -126,18 +126,19 @@ main {
 	-webkit-backdrop-filter: blur(5px);
 	backdrop-filter: blur(5px);
 	box-shadow: 0 0 10px rgba(0,0,0,1);
-	height: 50vh;
-	padding: 30px;
+	height: 75vh;
+	padding: 15px 0 15px 20px;
 	margin: auto;
 	position: absolute;
-	right: 12.5%;
-	top: 25%;
-	width: 75%;
+	right: 10%;
+	top: 12.5%;
+	width: 80%;
 }
 
 .menu__popup__overflow {
 	height: 100%;
 	overflow-y: scroll;
+	padding-right: 20px;
 }
 
 .menu__icon {
